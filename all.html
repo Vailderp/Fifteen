@@ -1,0 +1,288 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <divly id='divly'>
+      <div class="div" id='all_div'></div>
+    </divly>
+    <br />
+    <button type="button" id="collect" value="auto-collect">auto-collect</button>
+    <button type="button" id="confuse" value="confuse">confuse</button>
+    <script charset="utf-8">
+      var structure = [
+        '1' ,'2' ,'3' ,'4' ,
+        '5' ,'6' ,'7' ,'8' ,
+        '9' ,'10','11','12',
+        '13','14','15',' ' ,
+      ];
+      var steps = [];
+      var sum_steps = 0;
+    </script>
+    <script charset="utf-8">
+      var all_div = document.getElementById('all_div');
+      var auto_collect = document.getElementById('collect');
+      var confuse = document.getElementById('confuse');
+      var last_step = document.getElementById('last_step');
+      var next_step = document.getElementById('next_step');
+    </script>
+    <script charset="utf-8">
+      auto_collect.onclick = () => {
+        i = steps.length - 1;
+        setInterval(()=>{
+          if (i > -1){
+            document.getElementById(`div${steps[i]}`).click();
+            steps.length = i;
+            i--;
+          }
+        },100);
+      }
+    </script>
+    <script charset="utf-8">
+      var confuse_no_rnd = 0;
+      confuse.onclick = () => {
+        var confuse_rnd = Math.ceil(Math.random() * 500);
+        confuse_no_rnd = 0;
+        var interval_confuse = setInterval(()=>{
+          if(confuse_no_rnd < 50){
+            func_confuse();
+          }
+          confuse_no_rnd++;
+        },1);
+      }
+      var func_confuse = () => {
+        num_div = structure.length;
+        for (var  i = 0 ; i < Math.ceil(Math.random() * 100) ; i++){
+          div_r_rnd = Math.random();
+          div_r_rnd < 1 && div_r_rnd > 0.75 ?   div_rnd = 4 :
+          div_r_rnd < 0.75 && div_r_rnd > 0.5 ? div_rnd = 1 :
+          div_r_rnd < 0.5 && div_r_rnd > 0.25 ? div_rnd = -1 :
+                                                div_rnd = -4 ;
+          document.getElementById(`div${num_div}`).click();
+          num_div --;
+        }
+      }
+    </script>
+    <script charset="utf-8">
+    var color_list =
+    [
+    'aliceblue',
+    'antiquewhite',
+    'aqua',
+    'aquamarine',
+    'azure',
+    'beige',
+    'bisque',
+    'blue',
+    'blueviolet',
+    'brown',
+    'burlywood',
+    'cadetblue',
+    'chocolate',
+    'coral',
+    'cornflowerblue',
+    'cornsilk',
+    'crimson',
+    'cyan',
+    'darkblue',
+    'darkcyan',
+    'darkgoldenrod',
+    'darkgray',
+    'darkgreen',
+    'darkkhaki',
+    'darkmagenta',
+    'darkolivegreen',
+    'darkorange',
+    'darkorchid',
+    'darkred',
+    'darksalmon',
+    'darkseagreen',
+    'darkslateblue',
+    'darkslategray',
+    'darkturquoise',
+    'darkviolet',
+    'deeppink',
+    'deepskyblue',
+    'dimgray',
+    'dodgerblue',
+    'firebrick',
+    'floralwhite',
+    'forestgreen',
+    'fuchsia',
+    'gainsboro',
+    'ghostwhite',
+    'gold',
+    'goldenrod',
+    'gray',
+    'grey',
+    'green',
+    'greenyellow',
+    'honeydew',
+    'hotpink',
+    'indianred',
+    'indigo',
+    'ivory',
+    'khaki',
+    'lavender',
+    'lavenderblus',
+    'lemonchiffon',
+    'lightblue',
+    'lightcoral',
+    'lightcyan',
+    'lightgoldenrodyellow',
+    'lightgreen',
+    'lightpink',
+    'lightsalmon',
+    'lightseagreen',
+    'lightskyblue',
+    'lightslategray',
+    'lightsteelblue',
+    'lightyellow',
+    'lime',
+    'limegreen',
+    'linen',
+    'magenta',
+    'maroon',
+    'mediumaquamarine',
+    'mediumblue',
+    'mediumorchid',
+    'mediumpurple',
+    'mediumseagreen',
+    'mediumslateblue',
+    'mediumspringgreen',
+    'mediumturquoise',
+    'mediumvioletred',
+    'midnightblue',
+    'mintcream',
+    'mistyrose',
+    'moccasin',
+    'navajowhite',
+    'navy',
+    'oldlace',
+    'olive',
+    'olivedrab',
+    'orange',
+    'orangered',
+    'orchid',
+    'palegoldenrod',
+    'palegreen',
+    'paleturquoise',
+    'palevioletred',
+    'papayawhip',
+    'peachpuff',
+    'peru',
+    'pink',
+    'plum',
+    'powderblue',
+    'purple',
+    'red',
+    'rosybrown',
+    'royalblue',
+    'salmon',
+    'sandybrown',
+    'seagreen',
+    'seashell',
+    'sienna',
+    'silver',
+    'skyblue',
+    'slateblue',
+    'slategray',
+    'snow',
+    'springgreen',
+    'steelblue',
+    'tan',
+    'teal',
+    'thistle',
+    'tomato',
+    'turquoise',
+    'violet',
+    'wheat',
+    'white',
+    'whitesmoke',
+    'yellow',
+    'yellowgreen'
+    ];
+    var color = color_list[Math.ceil(Math.random() * (135 - 0) + 0)];
+    </script>
+    <script charset="utf-8">
+    document.querySelector('divly').onclick = e => {
+      if(e.target.id != 'divly' && e.target.id != 'all_div'){
+        if(e.target.className - document.getElementById('div16').className == -1 || e.target.className - document.getElementById('div16').className == 1 || e.target.className - document.getElementById('div16').className == 4 || e.target.className - document.getElementById('div16').className == -4){
+          e.target.id[4] == undefined ?
+            steps.push(`${e.target.id[3]}`)
+          :
+            steps.push(`${e.target.id[3]}${e.target.id[4]}`)
+          document.getElementById('div16').innerHTML = e.target.innerHTML;
+          document.getElementById('div16').style = `
+            width: ${(all_div_width / 4) -4}px;
+            height: ${(all_div_width / 4) -4}px;
+            background: ${color};
+            float: left;
+            border: 2px solid black;
+            font-size: ${Math.ceil(all_div_width / 5)}px;
+            font-family: monospace;
+            text-align: center;
+            user-select: none;`;
+            document.getElementById('div16').id = e.target.id;
+          e.target.innerHTML = ' ';
+          e.target.style = `
+            width: ${(all_div_width / 4) -4}px;
+            height: ${(all_div_width / 4) -4}px;
+            background: white;
+            border: 2px solid white;
+            float: left;
+            font-size: ${Math.ceil(all_div_width / 5)}px;
+            user-select: none;`;
+          e.target.id = 'div16';
+        }
+      }
+    }
+    </script>
+    <script charset="utf-8">
+    window.onload = () => {
+      window.innerWidth > window.innerHeight ? all_div_width = window.innerHeight / 1.25 : all_div_width = window.innerWidth / 1.25;
+      all_div.style.width = `${all_div_width}px`;
+      all_div.style.height = all_div.style.width;
+      for (var i = 0 ; i < 4 * 4 ; i++){
+        structure[i] != ' ' ?
+          all_div.innerHTML += `<div id="div${structure[i]}" class="${i}" step="0" style="
+            width:${(all_div_width / 4) -4}px;
+            height:${(all_div_width / 4) -4}px;
+            background:${color};
+            float:left;
+            border: 2px solid black;
+            font-size: ${Math.ceil(all_div_width / 5)}px;
+            font-family: monospace;
+            text-align: center;
+            user-select: none;
+          ">${structure[i]}</div>`
+        :
+          all_div.innerHTML += `<div id="div${16}" class="${i}" style="
+            width: ${(all_div_width / 4) -4}px;
+            height: ${(all_div_width / 4) -4}px;
+            background: white;
+            border: 2px solid white;
+            float: left;
+            font-size: ${Math.ceil(all_div_width / 5)}px;
+            user-select: none;
+          ">${structure[i]}</div>`
+      }
+    }
+    </script>
+    <style>
+      #all_div {
+        border: 1px solid black;
+        border-radius: 5px;
+      }
+      #collect {
+        width: 100px;
+        height: 100px;
+      }
+      #confuse{
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </body>
+</html>
